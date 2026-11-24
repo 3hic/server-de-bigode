@@ -1,0 +1,31 @@
+BOT DE DISCORD 24h NO SERVIDOR - COMO COLOCAR PARA FUNCIONAR
+============================================================
+O bot ja esta instalado. Falta so voce colocar o token (so voce pode, e ele e secreto).
+
+1) Criar o bot no Discord
+   - Abra https://discord.com/developers/applications  ->  "New Application"  (de um nome)
+   - Aba "Bot"  ->  "Reset Token"  ->  COPIE o token (nao mostre para ninguem)
+   - Aba "General Information"  ->  copie o "Application ID"  (e o CLIENT_ID)
+
+2) Convidar o bot para o seu servidor
+   - "OAuth2"  ->  "URL Generator"  ->  marque os escopos  bot  e  applications.commands
+   - Em "Bot Permissions" marque o que ele vai precisar (ex.: Send Messages)
+   - Abra o link gerado e escolha o servidor
+
+3) Colocar o token
+   - Abra o arquivo  .env  desta pasta (no PC: Z:\bots\discord-bot\.env  ou pelo File Browser)
+   - Preencha:  DISCORD_TOKEN=...   CLIENT_ID=...   (GUILD_ID=ID do servidor e opcional: comandos aparecem na hora)
+   - Salve. Em ate 1 minuto o bot sobe sozinho. Teste no Discord:  /ping   e   /status
+
+Rodando 24h
+   - Sobe sozinho quando o celular liga e reinicia sozinho se cair (supervisor do start-server.sh).
+   - Log:  logs/bot.log   (Z:\bots\discord-bot\logs\bot.log)
+   - Reiniciar depois de editar codigo/.env (SSH):  pkill -f "node index.js"   (volta em ~5 s)
+
+Criar comandos novos
+   - Copie commands/ping.js para commands/outro.js, mude o nome e o que ele responde, reinicie o bot.
+
+Observacoes
+   - Este modelo usa so a permissao "Guilds" (comandos /). Para ler mensagens normais, ative
+     "Message Content Intent" no portal do Discord e adicione GatewayIntentBits.GuildMessages / MessageContent no index.js.
+   - Nunca coloque o token em lugar publico. Se vazar: "Reset Token" no portal.
