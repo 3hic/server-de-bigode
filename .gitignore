@@ -1,0 +1,14 @@
+# binarios e saidas de build
+installer/dist/
+*.exe
+*.zip
+*.apk
+# segredos e dados pessoais: nunca versionar
+.env
+*.log
+credenciais*.txt
+rclone.conf
+*.pem
+id_ed25519*
+id_rsa*
+node_modules/
